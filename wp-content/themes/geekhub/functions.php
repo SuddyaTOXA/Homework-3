@@ -20,7 +20,10 @@ add_action('wp_enqueue_scripts', 'load_style_script');
  * Меню
  **/
 
-register_nav_menu('nav', 'Меню');
+register_nav_menus( array(
+    'header_menu' => 'Menu in header',
+    'footer_menu' => 'Menu in footer'
+) );
 
 /**
  * Підтримка мініатюр
@@ -28,5 +31,66 @@ register_nav_menu('nav', 'Меню');
 
 add_theme_support('post-thumbnails');
 
+/**
+ * Пост тайп "Викладачі"
+ **/
 
+function teachers() {
+    register_post_type( 'teachers', array(
+        'description' => 'Teachers GeekHub.',
+        'public' => true,
+        'menu_position' => 4,
+        'menu_icon' => 'dashicons-groups',
+        'supports' => array( 'title', 'editor','thumbnail', 'custom-fields' ),
+        'labels' => array(
+            'name' => 'Teachers',
+            'singular_name' => 'Teacher',
+            'menu_name' => 'Teachers',
+            'name_admin_bar' => 'Teacher',
+            'add_new' => 'Add new',
+            'add_new_item' => 'Add new teacher',
+            'edit_item' => 'Edit teacher',
+            'new_item' => 'New teacher',
+            'all_items' => 'All teachers',
+            'view_item' => 'Display teachers',
+            'search_items' => 'Find teacher',
+            'not_found' => 'Teachers were not found',
+            'not_found_in_trash' => 'Teachers were not found in the Trash',
+            'parent_item_colon' => '',
+        )
+    ));
+}
 
+add_action( 'init', 'teachers' );
+
+/**
+ * Пост тайп "Курси"
+ **/
+
+function courses() {
+    register_post_type( 'courses', array(
+        'description' => 'Courses of GeekHub.',
+        'public' => true,
+        'menu_position' => 4,
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'supports' => array( 'title', 'editor','thumbnail','excerpt' ,'custom-fields' ),
+        'labels' => array(
+            'name' => 'Courses',
+            'singular_name' => 'Course',
+            'menu_name' => 'Courses',
+            'name_admin_bar' => 'Course',
+            'add_new' => 'Add new',
+            'add_new_item' => 'Add new course',
+            'edit_item' => 'Edit course',
+            'new_item' => 'New course',
+            'all_items' => 'All courses',
+            'view_item' => 'Display courses',
+            'search_items' => 'Find course',
+            'not_found' => 'Courses were not found',
+            'not_found_in_trash' => 'Courses were not found in the Trash',
+            'parent_item_colon' => '',
+        )
+    ));
+}
+
+add_action( 'init', 'courses' );

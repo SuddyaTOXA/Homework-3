@@ -108,7 +108,7 @@
     <div id="header">
         <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name') ?></a></h1>
 
-        <?php wp_nav_menu(array('theme_location' => 'nav',
+        <?php wp_nav_menu(array('theme_location' => 'header_menu',
             'container'      =>'false',
             'menu_class'     => 'nav'
         )); ?>

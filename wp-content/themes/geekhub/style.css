@@ -238,7 +238,7 @@ body span.line
 .inner #header .nav li a {
     padding: 48px 0 44px;
 }
-.inner #header .nav li.active a  {
+.inner #header .nav li.current-menu-item  {
     min-width: 46px;
     text-align: center;
     background:url('images/inner_active.png') center bottom no-repeat;
@@ -264,7 +264,7 @@ body span.line
     color:#396375;
     text-transform:uppercase;
 }
-#header .nav li a.active,#header .nav li.active a,#header .nav li a:hover {
+#header .nav li a.current-menu-item,#header .nav li.current-menu-item a,#header .nav li a:hover {
     color:#e21d5d;
 }
 #header .links {
@@ -478,12 +478,21 @@ body span.line
     float:left;
     width:295px;
     padding: 24px 5px 24px 0;
-    border-top: 1px solid #D2DCE1;
     cursor: pointer;
 }
 #content .home ul.types li:nth-child(3n+1){
     clear: both;
 }
+
+#content .home ul.types li:nth-child(3n+1):before{
+    content: "";
+    position: absolute;
+    margin-top: -25px;
+    height: 1px;
+    width: 901px;
+    background-color: #D2DCE1;
+}
+
 #content .home ul.types li img {
     display:block;
     float:left;
@@ -763,21 +772,21 @@ text-indent:-999em;
     line-height:20px;
 }
 
-#content .team ul li.odd {
+#content .team ul li:nth-child(2n+1) {
     text-align:right;
 }
-#content .team ul li.odd h3 {
+#content .team ul li:nth-child(2n+1) h3 {
     float:left;
 
 }
-#content .team ul li.odd h3 span {
+#content .team ul li:nth-child(2n+1) h3 span {
     display:block;
 }
-#content .team ul li.odd img {
+#content .team ul li:nth-child(2n+1) img {
     float:left;
     display:block;
 }
-#content .team ul li.odd p {
+#content .team ul li:nth-child(2n+1) p {
     /*float:left;*/
     overflow:hidden;
     text-align:left;

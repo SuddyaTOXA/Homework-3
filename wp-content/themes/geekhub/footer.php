@@ -1,7 +1,7 @@
 <ul id="footer">
     <li>
 
-        <?php wp_nav_menu(array('theme_location' => 'nav',
+        <?php wp_nav_menu(array('theme_location' => 'footer_menu',
             'container'      =>'false',
             'menu_class'     => 'nav'
         )); ?>
