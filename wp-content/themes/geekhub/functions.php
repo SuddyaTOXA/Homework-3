@@ -94,3 +94,33 @@ function courses() {
 }
 
 add_action( 'init', 'courses' );
+
+/**
+ * Нова таксономія
+ **/
+function create_direction_taxonomies(){
+
+    register_taxonomy( 'directions-of-study', array('courses', 'teachers'), array(
+        'hierarchical' => false,
+        'labels' => array(
+            'name' => __( "Directions of study"),
+            'singular_name' => __( 'Directions' ),
+            'search_items' =>  __( 'Search Directions' ),
+            'all_items' => __( 'All Directions'),
+            'parent_item' => null,
+            'parent_item_colon' => null,
+            'edit_item' => __( 'Edit Direction' ),
+            'update_item' => __( 'Update Direction'),
+            'add_new_item' => __( 'Add New Direction' ),
+            'new_item_name' => __( 'New Direction Name' ),
+            'separate_items_with_commas' => __( 'Separate direction with commas' ),
+            'add_or_remove_items' => __( 'Add or remove direction' ),
+            'choose_from_most_used' => __( 'Choose from the most used directions' ),
+            'menu_name' => __( 'Directions' ),
+        ),
+        'show_ui' => true,
+        'query_var' => true,
+        'rewrite' => array( 'slug' => 'educational-direction' ),
+    ));
+}
+add_action( 'init', 'create_direction_taxonomies', 0 );

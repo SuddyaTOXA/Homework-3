@@ -13,6 +13,8 @@
     <?php
     $query = new WP_Query(array('post_type' => 'teachers',
                                 'posts_per_page'   => -1,
+                                'orderby' => 'post_date',
+                                'order' =>'ASC'
     ));
     while($query->have_posts()){ $query->the_post(); ?>
         <li>

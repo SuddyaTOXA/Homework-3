@@ -1,30 +1,34 @@
 <?php get_header(home);
 /**
-*  Template Name: Home-page
-**/
+ *  Template Name: Home-page
+ **/
 
 ?>
-   <div id="content">
+    <div id="content">
 
         <div class="home">
             <h2>ДЕТАЛІ КУРСІВ ТА РЕЄСТРАЦІЯ</h2>
             <ul class="types">
                 <?php
-                $query = new WP_Query(array('post_type' => 'courses',
+                  query_posts(array(
                     'posts_per_page'   => -1,
+                    'orderby' => 'post_date',
+                    'order' =>'ASC'
                 ));
-                while($query->have_posts()){ $query->the_post(); ?>
+                if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <li>
                         <?php the_post_thumbnail('full', 'class=imgstyle'); ?>
                         <a class="title" href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
                         <?php the_excerpt(); ?>
                         <a href="<?php the_permalink(); ?>">Докладніше + реєстрація</a>
                     </li>
-                <?php } ?>
-
-                <?php wp_reset_postdata(); // сбрасываем переменную $post ?>
+                <?php endwhile;
+                    wp_reset_query();?>
             </ul>
 
+            <?php else: ?>
+                <p>На жаль зараз немає курсів</p>
+            <?php endif; ?>
 
             <ul class="social_share">
                 <li id="vk">
